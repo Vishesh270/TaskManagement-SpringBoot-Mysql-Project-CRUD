@@ -77,4 +77,25 @@ public class UserRepositoryImpl implements UserRepository {
         return msg;
     }
 
+    @Override
+    public String assignTaskToexistingUser(Integer userId, Tasks task) {
+        User user=entityManager.find(User.class, userId);
+        String msg="";
+        if(user!=null){
+            user.getTasks().add(task);
+            entityManager.merge(user);
+           msg="task added succefully";  
+        }
+        else{
+            msg="Operation Failed";
+        }
+        return msg;   
+    }
+
+    @Override
+    public User getUserDetails(Integer userId) {
+        User user=entityManager.find(User.class, userId);
+        return user;
+    }
+
 }

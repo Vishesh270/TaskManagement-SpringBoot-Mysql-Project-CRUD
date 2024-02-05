@@ -25,11 +25,13 @@ public class UserController {
         User userRes = userService.saveUser(user);
         return new ResponseEntity<>(userRes, HttpStatus.OK);
     }
+    
     @PostMapping("/delete-user/{userId}")
     public ResponseEntity<String> deleteUser(@PathVariable("userId") Integer userId) {
         String res = userService.deleteUser(userId);
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
+
     @PostMapping("/deleteTask/{userId}/{taskIdtoDelete}")
     public ResponseEntity<String> deleteTaskofUserbyId(@PathVariable("userId") Integer userId,
             @PathVariable("taskIdtoDelete") List<Integer> taskIdToDelete) {
@@ -48,11 +50,15 @@ public class UserController {
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
+    @PostMapping("/addTaskto-exist-user/{userId}")
+    public ResponseEntity<String> addTaskToExistUser(@PathVariable("userId") Integer userId, @RequestBody Tasks task){
+        String res=userService.assignTaskToexistingUser(userId, task);
+        return new ResponseEntity<>(res,HttpStatus.OK);
+    }
 
-
-
-
-    
-
-
+    @GetMapping("user-details/{userId}")
+    public ResponseEntity<User> getAllUserDetails(@PathVariable("userId") Integer userId){
+        User res=userService.getUserDetails(userId);
+        return new ResponseEntity<>(res,HttpStatus.OK);
+    }
 }

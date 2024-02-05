@@ -10,5 +10,8 @@ public interface UserService {
     public List<Tasks> getUserTasksById(Integer taskId);
     public String deleteTaskofUserbyId(Integer userId,List <Integer> taskIdtoDelete);
     public String editTaskOfExistingUser(Integer userId,Integer taskId,Tasks updatedTasks);
+    public String assignTaskToexistingUser(Integer userId,Tasks task);
+    public User getUserDetails(Integer userId);
+
 
 }

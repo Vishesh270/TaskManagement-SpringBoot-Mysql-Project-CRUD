@@ -44,4 +44,15 @@ public class UserServiceImpl implements UserService {
         return msg;
     }
 
+    @Override
+    public String assignTaskToexistingUser(Integer userId, Tasks task) {
+        String msg=userRepository.assignTaskToexistingUser(userId, task);
+        return msg;
+    }
+
+    @Override
+    public User getUserDetails(Integer userId) {
+        return userRepository.getUserDetails(userId);
+    }
+
 }
